@@ -14,18 +14,18 @@ object Day1 {
   }
 
   def inverseCaptchaPart2(captcha: Array[Int]): Int = {
-    def go(array: Array[Int], index: Int, acc: Int): Int = {
-      if (index == array.length) return acc
+    def go(index: Int, acc: Int): Int = {
+      if (index == captcha.length) return acc
 
       val otherIndex = (index + (captcha.length / 2)) % captcha.length
 
-      if (array(index) == array(otherIndex))
-        go(array, index + 1, acc + array(index))
+      if (captcha(index) == captcha(otherIndex))
+        go(index + 1, acc + captcha(index))
       else
-        go(array, index + 1, acc)
+        go(index + 1, acc)
     }
 
-    go(captcha, 0, 0)
+    go(0, 0)
   }
 
   def main(args: Array[String]): Unit = {
